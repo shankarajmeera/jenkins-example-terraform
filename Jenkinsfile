@@ -4,6 +4,9 @@ pipeline {
   options {
     skipDefaultCheckout(true)
   }
+  tools {
+        terraform 'terraform'
+    }
   stages{
     stage('clean workspace') {
       steps {
@@ -17,7 +20,7 @@ pipeline {
     }
     stage('terraform') {
       steps {
-        bat './terraformw apply -auto-approve -no-color'
+        bat './terraform apply -auto-approve -no-color'
         //sh './terraformw apply -auto-approve -no-color'
       }
     }
