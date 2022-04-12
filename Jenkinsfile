@@ -18,7 +18,12 @@ pipeline {
         checkout scm
       }
     }
-    stage('terraform') {
+    stage("terraform init"){
+            steps{
+               bat 'terraform init'
+            }
+        }
+    stage('terraform apply') {
       steps {
          bat 'terraform apply -auto-approve'
         //sh './terraformw apply -auto-approve -no-color'
